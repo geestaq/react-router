@@ -9,6 +9,7 @@ class App extends Component {
                 <Route path='/' component={Navigation}>
                     <IndexRoute component={Home} />
                     <Route path='/contact' component={Contact} />
+                    <Route path='/hello/:name' component={Hello} />
                     <Route path='*' component={PageNotFound} />
                 </Route>
             </Router>        )
@@ -21,11 +22,13 @@ const Navigation = props => (
        <ul>
             <li><Link to="/" activeStyle={{color: '#48abee'}} onlyActiveOnIndex>Home</Link></li>
             <li><IndexLink to="/contact" activeClassName='active'>Contact</IndexLink></li>
+            <li><IndexLink to="/hello/geestaq" activeClassName='active'>Hello</IndexLink></li>
         </ul>
         {props.children}
     </div>
 );
 const Home = () => <h1>Hej, tu Home component</h1>
 const Contact = () => <h1>A tu Contact component</h1>
+const Hello = (props) => <h1>Witaj, {props.params.name}</h1>
 
 export default App;
